@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "name": "Trackademic",
+    "slug": "trackademic-mobile",
+    "scheme": "trackademic",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "plugins": ["expo-router", "expo-secure-store", "expo-web-browser"],
+    "ios": { "supportsTablet": true },
+    "web": { "bundler": "metro", "output": "single" }
+  }
+}
