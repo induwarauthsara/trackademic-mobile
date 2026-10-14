@@ -1,6 +1,6 @@
 {
   "name": "trackademic-mobile",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "main": "expo-router/entry",
   "scripts": {
@@ -11,7 +11,10 @@
     "typecheck": "tsc --noEmit",
     "test": "tsx --test tests/*.test.ts",
     "check": "npm run typecheck && npm test",
-    "export:web": "expo export --platform web"
+    "export:web": "expo export --platform web",
+    "export:all": "expo export --platform all --output-dir dist-release",
+    "build:android": "expo run:android",
+    "build:ios": "expo run:ios"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.2",

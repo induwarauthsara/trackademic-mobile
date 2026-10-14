@@ -1,13 +1,13 @@
 # Trackademic mobile app — plan aligned with the implemented web app
 
-Updated: 7 October 2026. Reviewed web revision: `ba3ca6c`.
-Status: first mobile increment implemented; later phases remain planned. No database or web application changes performed.
+Updated: 15 October 2026. Reviewed web revision: `ba3ca6c`.
+Status: core mobile academic flows implemented in 0.2; broader integrations remain planned. No database or web application changes performed.
 
-## Implementation checkpoint — first increment
+## Implementation checkpoint — mobile 0.2
 
-The mobile workspace now contains an Expo/React Native client with Google PKCE authentication, protected native session storage, Home, searchable Subjects, existing assignment/class details, Account/sign-out, and English/Sinhala/Tamil support. It reads the existing Supabase entities. New-user academic setup currently opens the web onboarding flow. Quick Add, native onboarding, mutations, charts, dashboard personalization, and rewards are not implemented yet.
+The mobile workspace includes Google PKCE authentication, secure native sessions, four tabs, native custom-subject setup, subject editing, semester selection, assignment/result/attendance/study/task/exam record entry and editing, confirmed deletion, local device drafts, Progress calculations, a background-aware focus timer, weekly study goals and saved account preferences. It reads and writes the existing Supabase entities through user-authenticated RLS. It preserves existing rewards; automatic awards, AI/quiz/community/calendar/billing services, preset-pack setup and advanced dashboard personalization remain planned.
 
-Type checking and eight focused tests pass; web, Android, and iOS production bundle exports and welcome language switching were verified. Live authentication/data checks need public Supabase configuration and a native development build. See [README.md](README.md) for setup, verification limitations, dependency advisories, and the next increment.
+Type checking and 17 focused tests pass. Live authentication/data checks need public Supabase configuration and an installed native build. See [README.md](README.md) and [release checklist](docs/RELEASE_CHECKLIST.md) for verification and boundaries. The sections below retain the broader design roadmap; not every proposed feature or backend phase is implemented by the core mobile client.
 
 ## 1. Review outcome
 

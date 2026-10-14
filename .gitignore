@@ -1,7 +1,9 @@
 node_modules/
+.submission-build/
 .expo/
 dist/
 dist-native/
+dist-release/
 web-build/
 .env
 .env.*

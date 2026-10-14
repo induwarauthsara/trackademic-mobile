@@ -19,7 +19,7 @@ function Navigation() {
   }, []);
   return <>
     <StatusBar style={dark ? 'light' : 'dark'} />
-    <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: theme.background } }}>
+    <Stack key={session?.user.id ?? 'guest'} screenOptions={{ headerShown: false, contentStyle: { backgroundColor: theme.background } }}>
       <Stack.Screen name="index" />
       <Stack.Screen name="auth/callback" />
       <Stack.Protected guard={!session}><Stack.Screen name="welcome" /></Stack.Protected>
@@ -27,6 +27,10 @@ function Navigation() {
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="account" />
         <Stack.Screen name="subjects/[id]" />
+        <Stack.Screen name="add" />
+        <Stack.Screen name="setup" />
+        <Stack.Screen name="subject-form" />
+        <Stack.Screen name="semesters" />
       </Stack.Protected>
     </Stack>
   </>;

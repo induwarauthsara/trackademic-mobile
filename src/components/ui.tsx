@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActivityIndicator, Linking, Pressable, RefreshControl, ScrollView, StyleSheet, Text, View, type TextProps, type ViewProps } from 'react-native';
+import { ActivityIndicator, KeyboardAvoidingView, Platform, Linking, Pressable, RefreshControl, ScrollView, StyleSheet, Text, View, type TextProps, type ViewProps } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { usePreferences } from '@/providers/PreferencesProvider';
 import { config } from '@/lib/config';
@@ -25,10 +25,10 @@ export function Button({ label, onPress, disabled, secondary }: { label: string;
 export function Screen({ children, refresh, refreshing = false }: { children: React.ReactNode; refresh?: () => void; refreshing?: boolean }) {
   const { theme } = usePreferences();
   return <SafeAreaView edges={['top', 'left', 'right']} style={{ flex: 1, backgroundColor: theme.background }}>
-    <ScrollView contentContainerStyle={styles.screen} keyboardShouldPersistTaps="handled"
+    <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}><ScrollView contentContainerStyle={styles.screen} keyboardShouldPersistTaps="handled"
       refreshControl={refresh ? <RefreshControl refreshing={refreshing} onRefresh={refresh} tintColor={theme.primary} /> : undefined}>
       {children}
-    </ScrollView>
+    </ScrollView></KeyboardAvoidingView>
   </SafeAreaView>;
 }
 
@@ -52,7 +52,7 @@ export function WebSetup({ title, body, path = '/onboarding' }: { title: string;
 }
 
 const styles = StyleSheet.create({
-  screen: { padding: 24, paddingBottom: 40, gap: 20, width: '100%', maxWidth: 720, alignSelf: 'center' },
+  screen: { padding: 24, paddingBottom: 120, gap: 20, width: '100%', maxWidth: 720, alignSelf: 'center' },
   card: { borderWidth: 1, borderRadius: 20, padding: 20, gap: 14 },
   button: { minHeight: 48, paddingHorizontal: 18, paddingVertical: 14, borderRadius: 14, justifyContent: 'center' },
 });

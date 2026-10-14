@@ -6,6 +6,7 @@ import en from '@/messages/en.json';
 import si from '@/messages/si.json';
 import ta from '@/messages/ta.json';
 import { mobileMessages } from '@/messages/mobile';
+import { nativeMessages } from '@/messages/native';
 
 export type Locale = 'en' | 'si' | 'ta';
 const light = { background: '#f4f8fc', surface: '#ffffff', muted: '#e8f4ff', primary: '#2b7fd4', accent: '#6ddccf', text: '#1e293b', secondary: '#64748b', border: '#e2e8f0', danger: '#b91c1c' };
@@ -31,12 +32,12 @@ export function PreferencesProvider({ children }: { children: ReactNode }) {
     const value = student.data?.profile?.locale;
     if (value === 'en' || value === 'si' || value === 'ta') setLocale(value);
   }, [student.data?.profile?.locale, session?.user.id]);
-  const isDark = student.data?.profile?.theme_preference
-    ? student.data.profile.theme_preference === 'dark' : systemTheme === 'dark';
+  const preference = student.data?.profile?.theme_preference;
+  const isDark = preference === 'dark' || (preference !== 'light' && systemTheme === 'dark');
   const t: Preferences['t'] = (key, values) => {
     const source = { en, si, ta }[locale];
     const translated = key.startsWith('mobile.')
-      ? getText(mobileMessages[locale], key.slice(7)) ?? getText(mobileMessages.en, key.slice(7))
+      ? getText(nativeMessages[locale], key.slice(7)) ?? getText(nativeMessages.en, key.slice(7)) ?? getText(mobileMessages[locale], key.slice(7)) ?? getText(mobileMessages.en, key.slice(7))
       : getText(source, key) ?? getText(en, key);
     return (translated ?? key).replace(/\{(\w+)\}/g, (match, name: string) => String(values?.[name] ?? match));
   };
