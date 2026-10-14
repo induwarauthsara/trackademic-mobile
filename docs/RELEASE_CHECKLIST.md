@@ -11,7 +11,7 @@
 
 ## Required before calling this a production release
 
-1. Supply `EXPO_PUBLIC_SUPABASE_URL` and the public `EXPO_PUBLIC_SUPABASE_ANON_KEY` in each build environment. The supplied values are installed in the ignored local `.env.local`, but the supplied project hostname returned a DNS name-not-found response on 15 October 2026. Verify the project URL and availability, then check that authoritative web migrations, including study sessions and user tasks, are applied and RLS is enabled.
+1. Supply `EXPO_PUBLIC_SUPABASE_URL` and the public `EXPO_PUBLIC_SUPABASE_ANON_KEY` in each build environment. The supplied values are installed in ignored local `.env.local`. Following project restoration on 15 October 2026, Auth and all eight required tables/column checks succeeded; Google sign-in is enabled. Verify the authoritative web migrations and authenticated ownership/write policies before release.
 2. Allow `trackademic:///auth/callback` in Supabase Auth redirects. Test Google sign-in in an installed native build: cold/warm callback, cancellation, expired callback, restore, sign-out and account switching. Expo Go cannot test this app-scheme flow.
 3. Using a test account, check native setup, retries after interrupted setup, subject editing, semester selection, and each record's create/edit/delete lifecycle. Compare records with the web app. Use a second account to verify isolation and denied writes.
 4. Test background timer, pause/resume, unsaved process termination, failed-save retry and device draft restoration. Drafts must not change Progress. Native drafts persist on-device under the account's ID; web drafts last only for that browser session.

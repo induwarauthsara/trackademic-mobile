@@ -83,7 +83,7 @@ The 17 tests cover large/multilingual credential storage, partial write failure,
 
 Bundle exports verify compilation, not installed-device behavior or live database permissions. Google sign-in and all authenticated reads/writes still require public configuration and physical-device or emulator testing. No database migrations or privileged keys are added by the mobile client; the web repository remains the schema authority.
 
-The latest [verification report](docs/VERIFICATION.md) records successful type checking, all 17 tests, three-platform production exports and the browser smoke check. The supplied backend hostname failed DNS resolution, so live account/provider/record verification could not be completed.
+The latest [verification report](docs/VERIFICATION.md) records successful type checking, all 17 tests, three-platform production exports and the browser smoke check. After project restoration, Supabase Auth, Google provider configuration and all eight required table/column checks succeeded. Authenticated account and record-write verification still requires a signed-in test account.
 
 For all platforms run `npm run export:all`. Native local installation uses `npm run build:android` with the Android SDK or `npm run build:ios` on macOS with Xcode. For hosted builds, link your Expo account/project and use `eas build --platform android --profile preview`; set the public environment variables in that build environment. `com.trackademic.mobile` is the configured app identifier; confirm ownership before store submission. An Expo project ID, signing credentials and store publishing are not configured or included.
 
